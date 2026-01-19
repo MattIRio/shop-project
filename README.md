@@ -57,10 +57,10 @@
 | POST    | `/api/v1/auth/login`                 | Login & receive JWT                   | Public          |
 | ——————— | ————————————————————————————————————— | ————————————————————————————————————— | ——————————————— |
 | GET     | `/api/v1/products`                   | List all products                     | Authenticated   |
-| GET     | `/api/v1/products/{id}`              | Get single product                    | Authenticated   |
-| POST    | `/api/v1/products`                   | Create product                        | ADMIN           |
-| PUT     | `/api/v1/products/{id}`              | Update product                        | ADMIN           |
-| DELETE  | `/api/v1/products/{id}`              | Delete product                        | ADMIN           |
+| GET     | `/api/v1/product/{id}`              | Get single product                    | Authenticated   |
+| POST    | `/api/v1/product`                   | Create product                        | ADMIN           |
+| PUT     | `/api/v1/product/{id}`              | Update product                        | ADMIN           |
+| DELETE  | `/api/v1/product/{id}`              | Delete product                        | ADMIN           |
 | ——————— | ————————————————————————————————————— | ————————————————————————————————————— | ——————————————— |
 | POST    | `/api/v1/cart/{quantity}/{productId}`| Add item to cart                      | Authenticated   |
 | GET     | `/api/v1/cart`                       | View cart contents                    | Authenticated   |

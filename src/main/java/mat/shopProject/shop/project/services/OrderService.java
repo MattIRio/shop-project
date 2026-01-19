@@ -103,7 +103,6 @@ public class OrderService {
         }
 
         user.getCartItems().clear();
-        cartItemsRepo.deleteAll(user.getCartItems());
         userOrders.add(order);
         user.setOrders(userOrders);
         userRepo.save(user);
@@ -114,7 +113,7 @@ public class OrderService {
     public BigDecimal countTotalAmount(List<CartItems> cartItems){
         BigDecimal totalAmount = BigDecimal.valueOf(0);
         for (CartItems cartItem : cartItems){
-            totalAmount = totalAmount.add(cartItem.getProduct().getPrice());
+            totalAmount = totalAmount.add(cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())));
         }
         return totalAmount;
     }

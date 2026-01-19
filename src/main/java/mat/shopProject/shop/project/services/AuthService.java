@@ -30,6 +30,13 @@ public class AuthService {
 
     public UserResponseDto register(CreateUserRequest userRequest) {
 
+
+        String username = userRequest.username();
+        String password = encoder.encode(userRequest.password());
+        if (userRepo.existsByUsername(username)) {
+            throw new UserAlreadyExistsException("Username already taken");
+        }
+
         UserModel user = UserModel.builder()
                 .username(userRequest.username())
                 .email(userRequest.email())
@@ -37,12 +44,6 @@ public class AuthService {
                 .password(userRequest.password())
                 .role(Role.USER)
                 .build();
-
-        String username = user.getUsername();
-        String password = encoder.encode(user.getPassword());
-        if (userRepo.existsByUsername(username)) {
-            throw new UserAlreadyExistsException("Username already taken");
-        }
 
         user.setPassword(password);
         userRepo.save(user);

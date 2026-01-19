@@ -1,7 +1,9 @@
 package mat.shopProject.shop.project.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import mat.shopProject.shop.project.PK.CartItemId;
 
@@ -23,6 +25,7 @@ public class Category {
     @Column(name = "category_id", nullable = false, updatable = false)
     private UUID id;
     @Column(name = "name", nullable = false)
+    @Size(min = 1, max = 100, message = "Category name must be between 1 and 100 characters")
     private String name;
     @Column(name = "slug", nullable = false)
     private String slug;
@@ -30,6 +33,7 @@ public class Category {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     @JsonIgnore
+    @Nullable
     private Category parent;
 
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -38,8 +38,6 @@ public class ProductController {
 
     @PutMapping("/api/v1/products/{productID}")
     public ResponseEntity<Product> changeProduct(UUID productID, @RequestBody CreateProductRequest createProductRequest) {
-        return ResponseEntity.ok(productService.changeProduct(productID,createProductRequest));
+        return ResponseEntity.ok(productService.changeProduct(productID, createProductRequest));
     }
-
-
-    }
+}

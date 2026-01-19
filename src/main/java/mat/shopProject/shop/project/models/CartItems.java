@@ -1,6 +1,7 @@
 package mat.shopProject.shop.project.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 import mat.shopProject.shop.project.PK.CartItemId;
 
@@ -19,6 +20,7 @@ public class CartItems {
     private CartItemId id;
 
     @Column(nullable = false, name = "quantity")
+    @Positive(message = "Quantity must be greater than 0")
     private int quantity;
 
     @MapsId("userId")

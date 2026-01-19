@@ -35,7 +35,4 @@ public class OrderContoller {
     public ResponseEntity<OrderResponseDto> getOrder(Authentication authentication, @PathVariable UUID order_id){
         return ResponseEntity.ok(orderService.getOrderById(authentication, order_id));
     }
-
-
-
 }

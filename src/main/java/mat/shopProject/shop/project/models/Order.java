@@ -2,6 +2,7 @@ package mat.shopProject.shop.project.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 import mat.shopProject.shop.project.models.enums.Status;
 
@@ -28,13 +29,13 @@ public class Order {
     @JoinColumn(name = "user_id", nullable = false)
     private UserModel user;
 
-
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItems> orderItems;
 
     @Column(name = "status", nullable = false)
     private Status status;
     @Column(name = "total_amount", nullable = false)
+    @Positive(message = "Amount must be greater than 0")
     private BigDecimal total_amount;
     @Column(name = "created_at", nullable = false)
     private LocalDateTime created_at;

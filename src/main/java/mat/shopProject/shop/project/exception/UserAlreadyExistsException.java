@@ -1,0 +1,7 @@
+package mat.shopProject.shop.project.exception;
+
+public class UserAlreadyExistsException extends RuntimeException {
+    public UserAlreadyExistsException(String message) {
+        super(message);
+    }
+}
